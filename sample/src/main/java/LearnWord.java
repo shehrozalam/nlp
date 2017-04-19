@@ -4,6 +4,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import edu.stanford.nlp.trees.Tree;
+
 import org.bson.Document;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ class LearnWord {
             String processSentence = sentenceMatcher.group();
             SentimentAnalysis getSentiment = new SentimentAnalysis();
             int sentenceSentiment = getSentiment.analyzeSentiment(processSentence); // get main sentiment here
+
             boolean isPositive = false;
             final short negativeSentiment = 0;
             final short positiveSentiment = 0;
@@ -34,7 +36,6 @@ class LearnWord {
             }
             Tree tree = getSentiment.getAnnotatedTree(processSentence);
             assignEmotions(processSentence, isPositive, tree);
-
         }
 
 

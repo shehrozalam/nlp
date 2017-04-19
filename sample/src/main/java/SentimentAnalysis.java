@@ -47,21 +47,10 @@ public class SentimentAnalysis {
 
             for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
                 Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
-                int sentiment = RNNCoreAnnotations.getPredictedClass(tree);
-                String partText = sentence.toString();
-                if (partText.length() > longest) {
-                    mainSentiment = sentiment;
-                    longest = partText.length();
-                }
-
-            }
+            
+				out.println(annotation.toShorterString());
         }
-        if (mainSentiment == 2 || mainSentiment > 4 || mainSentiment < 0) {
-            return 0;
-        } else {
-            System.out.println(mainSentiment);
-        }
-
+		
         return mainSentiment;
     }
 }
